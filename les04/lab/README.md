@@ -27,17 +27,14 @@ implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
 
 В файл app/src/main/resources/application.properties я вынес параметры:
 
-```properties
 products.file=product.csv
 products.html=products.html
-```
 
 Имя CSV-файла я внедрил в ResourceFileReader через @Value и SpEL:
 
-```java
 @Value("#{environment['products.file']}")
 private String fileName;
-```
+
 
 Я добавил реализацию HTMLTableRenderer, которая формирует HTML-таблицу товаров и сохраняет ее в файл.
 При запуске используется именно HTMLTableRenderer, так как он зарегистрирован как бин renderer.
